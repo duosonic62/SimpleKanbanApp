@@ -1,0 +1,62 @@
+<div class="ticket-container clearfix">
+  <h1>TODO</h1>
+  <hr>
+  <% @todo_tickets.each do |ticket| %>
+    <div class="ticket">
+      <div class="ticket-title">
+        <p><%= link_to ticket.title, detail_path(id: ticket.id) %></p>
+      </div>
+      <p class="ticket-contents"><%= truncate(ticket.content, length: 100) %></p>
+      <div class="ticket-edit">
+        <%= link_to 'Edit', edit_path(id: ticket.id), class: "btn" %>
+        <%= link_to 'Delete', destroy_path(id: ticket.id), method: :delete, data: { confirm: '削除しますか?' }, class: "btn " %>
+      </div>
+      <div class="ticket-status-change">
+        <p class="btn none">downgrade</p>
+        <%= link_to 'upgrade', upgrade_path(id: ticket.id), class: "btn" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div class="ticket-container clearfix">
+  <h1>DOING</h1>
+  <hr>
+  <% @doing_tickets.each do |ticket| %>
+    <div class="ticket">
+      <div class="ticket-title">
+        <p><%= link_to ticket.title, detail_path(id: ticket.id) %></p>
+      </div>
+      <p class="ticket-contents"><%= truncate(ticket.content, length: 100) %></p>
+      <div class="ticket-edit">
+        <%= link_to 'Edit', edit_path(id: ticket.id), class: "btn" %>
+        <%= link_to 'Delete', destroy_path(id: ticket.id), method: :delete, data: { confirm: '削除しますか?' }, class: "btn " %>
+      </div>
+      <div class="ticket-status-change">
+        <%= link_to 'downgrade', downgrade_path(id: ticket.id), class: "btn" %>
+        <%= link_to 'upgrade', upgrade_path(id: ticket.id), class: "btn" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div class="ticket-container clearfix">
+  <h1>DONE</h1>
+  <hr>
+  <% @done_tickets.each do |ticket| %>
+    <div class="ticket">
+      <div class="ticket-title">
+        <p><%= link_to ticket.title, detail_path(id: ticket.id) %></p>
+      </div>
+      <p class="ticket-contents"><%= truncate(ticket.content, length: 100) %></p>
+      <div class="ticket-edit">
+        <%= link_to 'Edit', edit_path(id: ticket.id), class: "btn" %>
+        <%= link_to 'Delete', destroy_path(id: ticket.id), method: :delete, data: { confirm: '削除しますか?' }, class: "btn " %>
+      </div>
+      <div class="ticket-status-change">
+        <%= link_to 'downgrade', downgrade_path(id: ticket.id), class: "btn" %>
+        <p class="btn none">upgrade</p>
+      </div>
+    </div>
+  <% end %>
+</div>

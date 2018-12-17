@@ -13,3 +13,157 @@
  *= require_tree .
  *= require_self
  */
+ header {
+  position: fixed;	
+  top: 0;	
+  left: 0;	
+  width: 100%;
+  z-index: 1;
+  background-color: #556473;
+  color: #fff;
+  height: 90px;
+}
+
+.header-heightfix{
+  height: 50px;
+}
+
+.logo{
+float: left;
+font-size: 30px;
+color: #fff;
+padding: 10px 20px;
+}
+
+.logo a:visited{
+  color: #dddddd;
+}
+
+.new-ticket{
+  float: right;
+  color: #fff;
+  padding-right: 20px;
+  padding-top: 30px;
+}
+
+.new-ticket a:visited{
+  color: #dddddd;
+}
+
+.logout{
+  float: right;
+  color: #fff;
+  padding-right: 20px;
+  padding-top: 30px;
+}
+
+.logout a:visited{
+  color: #dddddd;
+}
+
+
+.btn {
+  display: inline-block;
+  width: 30%;
+  height: 30px;
+  font-size: 16px;
+  opacity: 0.8;
+  border-radius: 2px;
+  background-color: #6bb7cc;
+  text-align: center;
+}
+
+.none {
+  margin: 0px 0px;
+}
+
+.btn:hover {
+opacity: 1;
+}
+
+/*  チケット関連 */
+.ticket-container {
+  display: block;
+  width: 94%;
+  padding-left: 3%;
+  padding-right: 3%;
+  padding-top: 3%; 
+} 
+
+.ticket-container hr {
+  width: 100%
+} 
+
+.clearfix:after{
+	content: "";
+	clear: both;
+	display: block;
+}
+
+.ticket {
+  float: left;
+  width: 46%;
+  margin-left: 2%;
+  margin-right: 2%;
+  margin-top:   20px;
+  margin-bottom:   20px;
+  padding-bottom: 20px;
+  background-color:#eef9ee;
+  text-align: center;
+} 
+
+.ticket-title{
+  width: 90%;
+
+  text-align: left;
+  display: inline-block;
+  word-break: keep-all;
+}
+
+.ticket-contents {
+  width: 90%;
+  text-align: left;
+  display: inline-block;
+  margin-top: 15px;
+  font-size: 13px;
+  word-break: keep-all;
+}
+
+.ticket-edit {
+  margin-bottom: 15px;
+}
+
+/* フォーム系関連 */
+.form {
+  display: block;
+  width: 94%;
+  padding-left: 3%;
+  padding-right: 3%;
+  padding-top: 3%;
+  text-align: left; 
+}
+
+ul li {
+  list-style: none;
+  margin-bottom: 20px;
+}
+
+label {
+  margin-right: 10px;
+  width:100px;
+  float: left;
+}
+
+/* チケット詳細関係 */
+.detail-container {
+  display: block;
+  width: 94%;
+  padding-left: 3%;
+  padding-right: 3%;
+  padding-top: 3%; 
+} 
+
+.detail-submit {
+  display: block;
+
+}

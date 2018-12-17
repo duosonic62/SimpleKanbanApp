@@ -1,0 +1,11 @@
+sample_user1:
+  id: 1
+  name: lowell
+  user_id: little feat
+  password_digest: test
+
+sample_user1:
+  id: 2
+  name: george
+  user_id: dixie
+  password_digest: test

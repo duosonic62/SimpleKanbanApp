@@ -1,0 +1,24 @@
+<%= form_for @user, :url => {:action => :create} do |f| %>
+  <% if @user.errors.any? %>
+    エラー：<%= @user.errors.count %>
+    <ul>
+      <%= @user.errors.fullmessages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %><br />
+
+  <%= f.label :user_id %><br />
+  <%= f.text_field :user_id %>
+
+  <%= f.label :password %><br />
+  <%= f.text_field :password %>
+
+  <%= f.label :password_confirmation %><br />
+  <%= f.text_field :password_confirmation %>
+
+  <%= f.submit '登録' %>
+<% end %>

@@ -1,0 +1,28 @@
+ticket_sample1:
+  id: 1
+  title: サンプルチケット１
+  content: コンテンツ
+  user_id: 3
+  status: 0
+
+ticket_sample2:
+  id: 2
+  title: サンプルチケット2
+  content: コンテンツ
+  user_id: 3
+  status: 1
+
+
+ticket_sample3:
+  id: 3
+  title: サンプルチケット3
+  content: コンテンツ
+  user_id: 3
+  status: 2
+
+ticket_sample4:
+  id: 4
+  title: サンプルチケット4
+  content: コンテンツ
+  user_id: 4
+  status: 0

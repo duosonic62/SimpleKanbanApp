@@ -1,0 +1,23 @@
+<div class="form">
+  <ul>
+    <%= form_for @ticket do |f| %>
+      <li>
+        <%= f.label :title %>
+        <%= f.text_field :title %><br />
+      </li>
+      <li>
+        <%= f.label :content %>
+        <%= f.text_area :content, cols: 40, rows: 10 %><br />
+      </li>
+      <li>
+        <%= f.select :status, @status %>
+      </li>
+      <li>
+        <%= f.submit 'edit', class: :btn %>
+      </li>
+    <% end %>
+    <li>
+      <%= link_to 'back', {action: :show}, class: :btn %>
+    </li>
+  </ul>
+</div>

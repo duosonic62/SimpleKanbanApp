@@ -1,0 +1,20 @@
+<div class="detail-container">
+  <h2 class="detail-title" > 
+    <%= @ticket.title %>
+    <hr> 
+  </h2>
+  <div class="detail-content">
+    <%= @ticket.content %>
+    <hr>
+  </div>
+  <div class="detail-info">
+    status : <%= @ticket.status%> <br> 
+    create date : <%= @ticket.created_at.strftime('%Y/%m/%d %H:%M') %>
+    <hr>
+  </div>
+  <div class="detail-submit">
+    <%= link_to 'back', {action: :show}, class: :btn %>
+    <%= link_to 'edit', edit_path(id: @ticket.id), class: :btn %>
+    <%= link_to 'delete', destroy_path(id: @ticket.id), method: :delete, data: { confirm: '削除しますか?' }, class: :btn %>
+  </div>
+</div>

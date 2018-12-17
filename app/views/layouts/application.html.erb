@@ -9,6 +9,18 @@
   </head>
 
   <body>
+  <header>
+    <p class="logo"> <%= link_to 'SimpleKanbanApp', top_path() %><p>
+    <% if signed_in? %>
+      <p class="new-ticket"><%= link_to 'create ticket', {controller: :tickets, action: :new} %></p>
+      <p class="logout"><%= link_to 'logout', {controller: :sessions, action: :destroy}, {method: :delete, data: {confirm: 'ログアウトしますか？'}} %></p> 
+    <% end %>
+  </header>
+  <div class="header-heightfix"></div>
     <%= yield %>
+  
+  <footer>
+  
+  </footer>
   </body>
 </html>

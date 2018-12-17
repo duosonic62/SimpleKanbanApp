@@ -1,0 +1,7 @@
+<h1>toppage</h1>
+<% if ! signed_in? %>
+  サインイン
+<% end %>
+<%= @user.name %>
+
+<%= link_to 'logout', {controller: :sessions, action: :destroy}, {method: :delete, data: {confirm: 'ログアウトしますか？'}} %>

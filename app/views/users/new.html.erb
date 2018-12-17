@@ -1,16 +1,34 @@
-<%= form_for @user, :url => {:action => :create} do |f| %>
+<div class="form">
+  <ul>
+    <%= form_for @user, :url => {:action => :create} do |f| %>
+      <% if @user.errors.any? %>
+        エラー：<%= @user.errors.count %>
+        <ul>
+          <%= @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
 
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-
-    <%= f.label :user_id %><br />
-    <%= f.text_field :user_id %>
-
-    <%= f.label :password %><br />
-    <%= f.text_field :password %>
-
-    <%= f.label :password_confirmation %><br />
-    <%= f.text_field :password_confirmation %>
-
-    <%= f.submit '登録' %>
-<% end %>
+      <li>
+        <%= f.label :name, "name" %>
+        <%= f.text_field :name %>
+      </li>
+      <li>
+        <%= f.label :user_id, "user id" %>
+        <%= f.text_field :user_id %>
+      </li>
+      <li>
+        <%= f.label :password, "password" %>
+        <%= f.password_field :password %>
+      </li>
+      <li>
+        <%= f.label :password_confirmation, "password confirm" %>
+        <%= f.password_field :password_confirmation %>
+      </li>
+      <li>
+        <%= f.submit 'create' ,class: :btn %>
+      </li>
+    <% end %>
+  </ul>
+</div>
