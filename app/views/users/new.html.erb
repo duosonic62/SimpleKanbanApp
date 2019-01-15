@@ -1,15 +1,7 @@
 <div class="form">
+  <%= render 'shared/error_messages' %>
   <ul>
     <%= form_for @user, :url => {:action => :create} do |f| %>
-      <% if @user.errors.any? %>
-        エラー：<%= @user.errors.count %>
-        <ul>
-          <%= @user.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      <% end %>
-
       <li>
         <%= f.label :name, "name" %>
         <%= f.text_field :name %>

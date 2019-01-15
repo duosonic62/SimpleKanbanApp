@@ -1,9 +1,9 @@
 class User < ActiveRecord::Base
   has_many :ticket
 
+  validates :name, presence: true,length: { maximum: 10 }
+  validates :user_id, presence: true, uniqueness: true,length: { maximum: 10 }
   has_secure_password validations: true
-  validates :user_id, presence: true, uniqueness: true
-  #validates :name, presence: true
 
   def self.new_remember_token
     SecureRandom.urlsafe_base64

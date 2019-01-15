@@ -16,32 +16,55 @@ class TicketsController < ApplicationController
 
   # チケット作成画面を表示
   def new
+    @ticket = Ticket.new(flash[:ticket])
   end
 
   # チケットを作成する
   def create
     @ticket = Ticket.new(ticket_params)
     @ticket.user_id = @user.id
+
     if @ticket.save
       # トップページに繊維
       redirect_to action: 'show'
     else
       # チケット作成ページに繊維
-      render 'new'
+      redirect_to :back, flash: {
+        ticket: @ticket,
+        error_messages: @ticket.errors.full_messages
+      }
     end
   end
 
   # チケットを編集する
   def edit
+    # チケットの作成者が現在のユーザか？
+    if !collect_user?
+      redirect_to action: 'show'  
+    end
+
+    # フラッシュで編集時のオブジェクトが流れてきた時のみ@ticketにセットする
+    if flash[:ticket]
+      @ticket = Ticket.new(flash[:ticket])
+    end
     @status = { TODO: 'TODO', DOING: 'DOING', DONE: 'DONE'}
   end
 
   # チケットを更新
   def update
+    # チケットの作成者が現在のユーザか？
+    if !collect_user?
+      redirect_to action: 'show'  
+    end
     if @ticket.update(ticket_params)
       redirect_to action: 'show'
     else
-      redirect_to action: 'show'
+      binding.pry
+      ticket = Ticket.new(ticket_params)
+      redirect_to :back, flash: {
+        ticket: ticket,
+        error_messages: @ticket.errors.full_messages
+      }
     end
   end
 
@@ -85,5 +108,10 @@ class TicketsController < ApplicationController
       # 編集されたくないものは取り除く
       def ticket_params
         params.require(:ticket).permit(:title, :content, :status)
+      end
+
+      # チケットの作成者が現在のユーザか？
+      def collect_user?
+        Ticket.find(params[:id])[:user_id] == @user[:id]
       end
 end

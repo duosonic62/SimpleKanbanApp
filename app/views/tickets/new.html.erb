@@ -1,6 +1,7 @@
 <div class="form">
+  <%= render 'shared/error_messages' %>
   <ul>
-    <%= form_for :ticket, :url => {:action => :create}  do |f| %>
+    <%= form_for @ticket, :url => {:action => :create}  do |f| %>
       <li>
         <%= f.label :title %>
         <%= f.text_field :title %><br />

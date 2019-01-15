@@ -2,16 +2,19 @@ class UsersController < ApplicationController
   skip_before_action :require_sign_in!, only: [:new, :create]
   
   def new
-    @user = User.new
+    @user = User.new(flash[:user])
   end
 
   def create
-    @user = User.new(user_params)
-    if @user.save
+    user = User.new(user_params)
+    if user.save
         redirect_to login_path
     else
       # 書き込み失敗
-      render 'new'
+      redirect_to :back, flash: {
+        user: user,
+        error_messages: user.errors.full_messages
+      }
     end
   end
 
