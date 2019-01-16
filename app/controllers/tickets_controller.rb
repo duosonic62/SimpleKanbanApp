@@ -2,6 +2,7 @@ class TicketsController < ApplicationController
   before_action :set_ticket, only: [:detail, :edit, :update, :destroy, :upgrade, :downgrade]
   before_action :set_user
   before_action :require_sign_in!
+  before_action :unauthorized_access, only: [:detail, :edit, :update, :destroy, :upgrade, :downgrade]
 
   # チケットの一覧を表示する
   def show
@@ -12,6 +13,9 @@ class TicketsController < ApplicationController
 
   # チケットの詳細を表示する
   def detail
+    if !collect_user?
+      redirect_to action: 'show'  
+    end
   end
 
   # チケット作成画面を表示
@@ -38,11 +42,6 @@ class TicketsController < ApplicationController
 
   # チケットを編集する
   def edit
-    # チケットの作成者が現在のユーザか？
-    if !collect_user?
-      redirect_to action: 'show'  
-    end
-
     # フラッシュで編集時のオブジェクトが流れてきた時のみ@ticketにセットする
     if flash[:ticket]
       @ticket = Ticket.new(flash[:ticket])
@@ -52,14 +51,9 @@ class TicketsController < ApplicationController
 
   # チケットを更新
   def update
-    # チケットの作成者が現在のユーザか？
-    if !collect_user?
-      redirect_to action: 'show'  
-    end
     if @ticket.update(ticket_params)
       redirect_to action: 'show'
     else
-      binding.pry
       ticket = Ticket.new(ticket_params)
       redirect_to :back, flash: {
         ticket: ticket,
@@ -98,6 +92,9 @@ class TicketsController < ApplicationController
       # 選択したチケットをセット
       def set_ticket
         @ticket = Ticket.find(params[:id])
+      rescue
+        flash[:error_messages] = ['Error! Unauthorized access.']
+        redirect_to action: 'show'
       end
 
       # ログイン中のuserをセット
@@ -112,6 +109,14 @@ class TicketsController < ApplicationController
 
       # チケットの作成者が現在のユーザか？
       def collect_user?
-        Ticket.find(params[:id])[:user_id] == @user[:id]
+        @user.ticket.exists?(params[:id])
+      end
+
+      # 不正なチケットアクセスの対処
+      def unauthorized_access 
+        if !collect_user?
+          flash[:error_messages] = ['Error! Unauthorized access.']
+          redirect_to action: 'show'
+        end
       end
 end

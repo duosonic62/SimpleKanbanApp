@@ -167,3 +167,13 @@ label {
   display: block;
 
 }
+
+/* エラーメッセージ */
+.error-messages {
+  border: 2px solid #C44;
+  border-radius: 6px;
+  padding: 10px;
+  background-color: rgba(204, 68, 68, 0.3);
+  font-size: 16px;
+  color: #333;
+}

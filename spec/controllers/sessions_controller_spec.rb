@@ -4,7 +4,7 @@ require 'rails_helper'
 RSpec.describe SessionsController, type: :controller do
   # newメソッド
   describe 'Get #new' do
-    context 'ログイン指定ない状態' do
+    context 'ログインしていない状態' do
       before { get :new }
 
       it 'レスポンスコードが200' do

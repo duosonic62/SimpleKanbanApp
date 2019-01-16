@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
       # トップページに繊維
       redirect_to controller: 'tickets', action: 'show'
     else
-      flash.now[:danger] = 'IDまたはパスワードが違います。'
+      flash.now[:error_messages] = ['Incorrect userid or password']
       render 'new'
     end
   end
@@ -32,7 +32,7 @@ class SessionsController < ApplicationController
     def set_user
       @user = User.find_by!(user_id: session_params[:user_id])
     rescue
-      flash.now[:danger] = 'IDまたはパスワードが違います。'
+      flash.now[:error_messages] = ['Incorrect userid or password']
       render 'new'
     end
 
