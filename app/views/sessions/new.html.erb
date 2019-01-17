@@ -3,7 +3,7 @@
   <ul>
   <%= form_for :session, :url => {:action => :create}  do |f| %>
     <li>
-      <%= f.label :user_id %>
+      <%= f.label :user_id, 'User ID'%>
       <%= f.text_field :user_id %><br />
     </li>
     <li>
