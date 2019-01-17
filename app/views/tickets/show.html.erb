@@ -13,8 +13,8 @@
         <%= link_to 'Delete', destroy_path(id: ticket.id), method: :delete, data: { confirm: '削除しますか?' }, class: "btn " %>
       </div>
       <div class="ticket-status-change">
-        <p class="btn none">downgrade</p>
-        <%= link_to 'upgrade', upgrade_path(id: ticket.id), class: "btn" %>
+        <p class="btn none">downgrade status</p>
+        <%= link_to 'upgrade status', upgrade_path(id: ticket.id), class: "btn" %>
       </div>
     </div>
   <% end %>
@@ -34,8 +34,8 @@
         <%= link_to 'Delete', destroy_path(id: ticket.id), method: :delete, data: { confirm: '削除しますか?' }, class: "btn " %>
       </div>
       <div class="ticket-status-change">
-        <%= link_to 'downgrade', downgrade_path(id: ticket.id), class: "btn" %>
-        <%= link_to 'upgrade', upgrade_path(id: ticket.id), class: "btn" %>
+        <%= link_to 'downgrade status', downgrade_path(id: ticket.id), class: "btn" %>
+        <%= link_to 'upgrade status', upgrade_path(id: ticket.id), class: "btn" %>
       </div>
     </div>
   <% end %>
@@ -55,8 +55,8 @@
         <%= link_to 'Delete', destroy_path(id: ticket.id), method: :delete, data: { confirm: '削除しますか?' }, class: "btn " %>
       </div>
       <div class="ticket-status-change">
-        <%= link_to 'downgrade', downgrade_path(id: ticket.id), class: "btn" %>
-        <p class="btn none">upgrade</p>
+        <%= link_to 'downgrade status', downgrade_path(id: ticket.id), class: "btn" %>
+        <p class="btn none">upgrade status</p>
       </div>
     </div>
   <% end %>

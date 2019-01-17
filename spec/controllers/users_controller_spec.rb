@@ -42,7 +42,7 @@ RSpec.describe UsersController, type: :controller do
       end
 
       it 'ログインページにリダイレクトされること' do
-        expect(post :create, params: params).to redirect_to(login_path)
+        expect(post :create, params: params).to redirect_to(controller: 'tickets', action: 'show')
       end
     end
 
@@ -69,22 +69,3 @@ RSpec.describe UsersController, type: :controller do
     end
   end
 end
-
-        # let(:params) do
-      #   { session: {
-      #       user_id: 'Taro',
-      #       password: 'passw0rd'
-      #     }
-      #   }
-      # end
-      # # ログイン状態を作る
-      # before(:each) do
-      #   old_controller = @controller
-      #   @controller = SessionsController.new
-
-      #   # user1を生成する
-      #   create(:user1)
-      #   # user1でログインさせる
-      #   post( :create, params: params )
-      #   @controller = old_controller
-      # end
