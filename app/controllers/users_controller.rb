@@ -11,10 +11,9 @@ class UsersController < ApplicationController
         redirect_to login_path
     else
       # 書き込み失敗
-      redirect_to :back, flash: {
-        user: user,
-        error_messages: user.errors.full_messages
-      }
+      flash[:error_messages] = user.errors.full_messages
+      flash[:user] = user
+      redirect_back(fallback_location: root_path)
     end
   end
 

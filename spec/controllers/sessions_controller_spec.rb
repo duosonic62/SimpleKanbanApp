@@ -75,13 +75,13 @@ RSpec.describe SessionsController, type: :controller do
       end
 
       it 'ログアウトすること' do
-        expect(delete :destroy).to redirect_to("/login")
+        expect(delete :destroy).to redirect_to("/")
       end
     end
 
     context 'ログインしていなかった場合' do
       it 'ログイン画面に繊維すること' do
-        expect(delete :destroy).to redirect_to("/login")
+        expect(delete :destroy).to redirect_to("/")
       end
     end
   end

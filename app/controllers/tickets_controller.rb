@@ -33,10 +33,9 @@ class TicketsController < ApplicationController
       redirect_to action: 'show'
     else
       # チケット作成ページに繊維
-      redirect_to :back, flash: {
-        ticket: @ticket,
-        error_messages: @ticket.errors.full_messages
-      }
+      flash[:error_messages] = @ticket.errors.full_messages
+      flash[:ticket] = @ticket
+      redirect_back(fallback_location: root_path)
     end
   end
 
@@ -55,10 +54,9 @@ class TicketsController < ApplicationController
       redirect_to action: 'show'
     else
       ticket = Ticket.new(ticket_params)
-      redirect_to :back, flash: {
-        ticket: ticket,
-        error_messages: @ticket.errors.full_messages
-      }
+      flash[:error_messages] = @ticket.errors.full_messages
+      flash[:ticket] = ticket
+      redirect_back(fallback_location: root_path)
     end
   end
 
