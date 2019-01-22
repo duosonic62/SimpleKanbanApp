@@ -96,7 +96,7 @@ RSpec.describe TicketsController, type: :controller do
 
       it 'showにリダイレクトされること' do
         post(:create, params: params)
-        expect(response).to redirect_to("/top")
+        expect(response).to redirect_to action: 'show'
       end
       
       it 'チケットが一つ増えていること' do
