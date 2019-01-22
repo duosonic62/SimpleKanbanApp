@@ -33,7 +33,8 @@ RSpec.describe SessionsController, type: :controller do
       end
 
       it 'トップページに遷移すること' do
-        expect(get :new).to redirect_to("/top")
+        # expect(get :new).to redirect_to("/top")
+        expect(get :new).to redirect_to(controller: 'tickets', action: 'show')
       end
     end
   end
@@ -51,13 +52,13 @@ RSpec.describe SessionsController, type: :controller do
 
       it 'ログインすること' do
         create(:user1)
-        expect(post :create, params: params).to redirect_to("/top")
+        expect(post :create, params: params).to redirect_to(controller: 'tickets', action: 'show')
       end
     end
   end
 
   # destroyメソッド
-  describe 'Delete #create' do
+  describe 'Delete #destroy' do
     context 'ログインしていた場合' do
       let(:params) do
         { session: {
@@ -75,13 +76,13 @@ RSpec.describe SessionsController, type: :controller do
       end
 
       it 'ログアウトすること' do
-        expect(delete :destroy).to redirect_to("/")
+        expect(delete :destroy).to redirect_to action: 'new'
       end
     end
 
     context 'ログインしていなかった場合' do
       it 'ログイン画面に繊維すること' do
-        expect(delete :destroy).to redirect_to("/")
+        expect(delete :destroy).to redirect_to action: 'new'
       end
     end
   end
