@@ -1,24 +1,28 @@
-# README
+# SimpleKanbanApp
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Description
+You can use Kanban style task management tool throught your browser.
 
-Things you may want to cover:
-
+## Requirement
 * Ruby version
+  2.3.3
 
-* System dependencies
+* Rails version
+  5.0.7
 
-* Configuration
+## Usage
+### run
+1. clone
+1. Hit the command ```bundle install``` at Application root derectory.
+1. Hit the command ```rails db:migrate``` at Application root derectory.
+1. Hit the command ```rails s``` at Application root derectory.
 
-* Database creation
+### test
+1. Hit the command ```rspec spec/``` at Application root derectory.
 
-* Database initialization
+### chat
+1. Start your browser.
+1. Visit ```http://localhost:3000/```
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## License
+MIT
